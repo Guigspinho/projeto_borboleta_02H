@@ -16,4 +16,10 @@ Ainda com o caráter extensionista, mantivemos o compromisso de apresentar um la
 
 ## Explicação do Wireframe
 
+![imagem1](3.jpg)
+
 Quando clicamos na aba de acervo no Menu o conteúdo do site é direcionado ao nosso catálogo de livros onde estão separados em cards contendo seu titulo e ano de lançamento, apenas como uma forma prévia de visualização para o usuário que ao clicar no livro de interesse é redirecionado para uma navegação dinâmica.
+
+![imagem1](4.jpg)
+
+A página mostra o livro em alta resolução e com mais detalhes sobre sua descrição, ficha técnica, preço. Essa página irá servir como modelo só mudando as informações do livro escolhido na página anterior.
