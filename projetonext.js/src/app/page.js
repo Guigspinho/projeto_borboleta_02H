@@ -1,5 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import IndexCarrossel from "./components/indexcarrossel";
 import TituloInicial from "./components/tituloinicial";
 import Indexcard from "./components/indexcard";
