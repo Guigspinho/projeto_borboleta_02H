@@ -1,7 +1,5 @@
-import '../globals.css';
-
-    export default function TituloInicial() {
+export default function TituloInicial({texto}) {
     return (
-        <h1 className="tituloinicial">Conheça a nossa Biblioteca!</h1>
+        <h1 className="tituloinicial">{texto}</h1>
     )
 }

@@ -1,8 +1,10 @@
-import '../globals.css'
+'use client';    
 import Image from 'next/image';
 import Link from 'next/link'
+import { useEffect } from 'react';  
 
 export default function Menu() {
+    
     return (
         <header className="menu">
             <Link href="/"> <Image src="/logorickriordan.png" alt="Logo da biblioteca Rick Riordan" className="logo" width={150} height={150} /> </Link>
