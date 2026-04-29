@@ -3,7 +3,7 @@ import Image from 'next/image';
 
     export default function IndexCarrossel() {
     return (
-        <section class="carrossel">
+        <section className="carrossel">
             <Image src="/capabiblioteca.png" className="slide ativo" fill />
             <Image src="/capa2.png" className="slide" fill />
             <Image src="/capa3.png" className="slide" fill />
