@@ -2,13 +2,12 @@ import Image from 'next/image';
 
 function Card({imgsrc, altevento, tipodeevento, nomedoevento, status }) {
     return (
-        
-            <article className="programacaoeventos">
-                <Image src={imgsrc} alt={altevento} className="imgprogramacaoeventos" width={300} height={200} />
-                <h4 className="h4tituloprogramacao"> {tipodeevento} </h4>
-                <h3 className="h3tituloprogramacao"> {nomedoevento} </h3>
-                <p className="ptituloprogramacao"> {status} </p>
-            </article>
+        <article className="programacaoeventos">
+            <Image src={imgsrc} alt={altevento} className="imgprogramacaoeventos" width={300} height={200} />
+            <h4 className="h4tituloprogramacao"> {tipodeevento} </h4>
+            <h3 className="h3tituloprogramacao"> {nomedoevento} </h3>
+            <p className="ptituloprogramacao"> {status} </p>
+        </article>
     );
 }
 
