@@ -241,3 +241,121 @@ export default function TituloInicial({texto}) {
 }
 ```
 No tituloinicial.js, retornamos a função com um prop para alterar o texto em cada page.js, visto que, toda página tem um título na hora que entramos nela.
+
+### globals.css e page.module.css
+No globals.css colamos todo o css que já existia, deixando o page.module.css sem alterações para modularizar o css em breve.
+
+### favicon.ico
+Ícone que aparece do lado do nome do site.
+
+### layout.js
+```javascript
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Menu from "./components/menu";
+import Footer from "./components/footer";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata = {
+  title: "Biblioteca Rick Riordan",
+  description: "Site da biblioteca Rick Riordan, com informações sobre eventos, programação, acervo e contato.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body><Menu />{children}<Footer /></body>
+    </html>
+  );
+}
+```
+Define uma estrutura de interface que será utilizada por todas as páginas, onde colocamos as fontes, os metadados do site, ícone e a estrutura do site que será usada em todas as páginas: Menu vindo antes de todo o conteúdo do body e o footer depois.
+
+### page.js
+```javascript
+import IndexCarrossel from "./components/indexcarrossel";
+import TituloInicial from "./components/tituloinicial";
+import Indexcard from "./components/indexcard";
+import Section2 from "./components/index2section";
+import Section3 from "./components/index3section";
+
+export default function Home() {
+
+  const cards = [
+    {
+      href: "/programacao",
+      imageSrc: "cardprogramacao.jpg",
+      imageAlt: "Imagem retratando a programação da biblioteca...",
+      title: "Programação",
+      description: "Confira a programação da nossa biblioteca, com atividades culturais, oficinas criativas e momentos especiais pensados para crianças, jovens e adultos."
+    },
+    {
+      href: "/acervo",
+      imageSrc: "cardacervo.jpg",
+      imageAlt: "Imagem retratando o acervo...",
+      title: "Acervo",
+      description: "Explore nosso acervo com uma grande variedade de livros, desde clássicos da literatura até obras contemporâneas para todos os gostos."
+    },
+    {
+      href: "/eventos",
+      imageSrc: "cardeventos.jpg",
+      imageAlt: "Imagem retratando os eventos...",
+      title: "Faça o seu evento!",
+      description: "Participe dos nossos eventos, como lançamentos de livros, rodas de leitura e encontros com autores que aproximam você do universo literário."
+    }
+  ];
+  
+  return (
+    <>
+      <IndexCarrossel />
+      <TituloInicial texto="Conheça a nossa Biblioteca!" />
+      <main>
+      <section className="sectioncards">
+        {cards.map((card, index) => (
+          <Indexcard
+            key={index}
+            href={card.href}
+            imageSrc={card.imageSrc}
+            imageAlt={card.imageAlt}
+            title={card.title}
+            description={card.description}
+          />
+        ))}
+      </section>
+      <Section2 
+        imgEvento="/eventoprox.jpg"
+        altEvento="Dinâmica com crianças sentadas em círculo"
+        tituloEvento="Eventos Próximos"
+        textoEvento="Fique por dentro dos próximos eventos da biblioteca! 
+          Teremos contação de histórias, oficinas educativas e atividades 
+          interativas para todas as idades ao longo do mês."
+        
+        imgLivro="/livroemalta.jpg"
+        altLivro="Livro Perigoso! Este livro contém coelhos!"
+        tituloLivro="Livro em Alta"
+        textoLivro="Descubra o livro em destaque da semana, escolhido pelos
+         nossos leitores. Uma obra envolvente que promete encantar e despertar 
+         o interesse pela leitura."
+      />
+      <Section3 />
+    </main>
+
+
+    </>
+    
+  );
+}
+```
+A page.js que está apenas dentro do src/app é a Home do site. Importamos todos os componentes que serão utilizados no site, após isso, criamos uma const com os valores dos cards do primeiro section (atribuindo um endereço, uma imagem, um alt, um título e uma descrição para cada uma). Por fim, retornamos o site colocando em ordem cada componente, a tag de main e inserindo os valores dos props para o que faltou.
