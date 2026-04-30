@@ -37,6 +37,207 @@ Na página de contato, temos um formulário para que o usuário possa entrar em 
 Na página de eventos, temos uma imagem representando os eventos realizados por empresas dentro da biblioteca, com um cabeçalho “convidando” o usuário e uma descrição do que pode ser feito no local. Abaixo tem um formulário para que a biblioteca receba propostas de eventos, com os dados do realizador, informações de data, horário e quantidade de convidados, entre outros.
 
 
-## DOCUMENTAÇÃO DA MIGRAÇÃO DA HOME PAGE PRA NEXTJS
+## Tutorial da migração do site para nextjs
 
+### Public
 Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas as imagens para a pasta public pois é nessa pasta que elas ficam disponíveis para todo o projeto.
+
+### Components
+Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário. Outro ponto importante é o uso do código "export default function(){return}", ele é uma estrutura de exportação padrão utilizada no next.js, servindo para criar aplicações rápidas com funcionalidades específicas.
+
+#### acervolivro.js
+
+
+#### contatoform.js
+```javascript
+export default function ContatoForm() {
+    return (
+        <form className="formcontato">
+            <label htmlFor="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="Nome:" autoFocus required />
+
+            <label htmlFor="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="email@dominio.com:" required />
+            
+            <label htmlFor="assunto">Assunto</label>
+            <input type="text" name="assunto" id="assunto" placeholder="Assunto" required />
+
+            <label htmlFor="areatexto">Deixe a sua mensagem!</label>
+            <textarea name="message" rows="6" cols="30" id="areatexto" placeholder="Deixe a sua mensagem" required></textarea>
+            
+            <button type="submit" value="Enviar" id="envio"> Enviar </button>
+        </form>
+    )
+}
+```
+No contatoform.js utilizamos o código do formulário de contato e alteramos a sintaxe de alguns pontos para a funcionalidade do mesmo, o class passa a se chamar className, o for vira htmlFor e o input passa a ter a necessidade de fechar "/".
+
+#### footer.js
+```javascript
+import Image from 'next/image';
+
+function MembroEquipe({ src, nome }) {
+    return (
+        <figure className="footerfigure">
+            <Image 
+                src={src} 
+                alt={nome} 
+                className="footerimgequipe" 
+                width={150} 
+                height={150} 
+            />
+            <figcaption className="footernomealuno">{nome}</figcaption>
+        </figure>
+    );
+}
+
+export default function Footer() {
+    return (
+        <footer className="footerprincipal">
+            <p className="footertexto" style={{ marginBottom: '30px' }}>R. dos Pinheiros, 513 - Pinheiros, São Paulo - SP, 05422-010</p>
+            <p className="footertexto">Desenvolvido por:</p>
+            <section className="footersection">
+                <MembroEquipe src="/iconeguilherme.png" nome="Guilherme Pinho" />
+                <MembroEquipe src="/iconemoabe.png" nome="Moabe Guedes" />
+                <MembroEquipe src="/iconeryan.png" nome="Ryan Sousa" />
+            </section>
+        </footer>
+    )
+}
+```
+No footer.js, além do export default function, também utilizamos uma função à parte para reduzir, organizar e reutilizar o código com a imagem e nome dos membros da equipe, fizemos isso a partir do uso de props, onde o componente filho recebe o conteúdo do componente pai, criando nomes como "src" e "nome" que são genéricos e podem ser alterados ao passarmos o valor para o componente pai, como é visto em "<MembroEquipe src="/iconemoabe.png" nome="Moabe Guedes" />". Ao migrar para o nextjs, também passamos a ter a necessidade de passar os valores de width e height para o Image e o uso de chaves duplas para utilizar style inline.
+
+#### index3section.js
+```javascript
+export default function Section3() {
+    return (
+        <section className="sectionfinal"> 
+            <article className="sobrenos"> 
+                <h3 className="titulosobrenos">Sobre Nós</h3>
+                <p>Somos um espaço dedicado ao incentivo à leitura, ao conhecimento e à cultura. Nossa missão é proporcionar um ambiente acolhedor onde todos possam aprender, explorar e se conectar através dos livros.</p>
+            </article>
+            <div className="local"> 
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0720126121896!2d-46.682935!3d-23.565856999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce572d94233575%3A0xac043ea588d47e1a!2sLivraria%20da%20Travessa!5e0!3m2!1spt-BR!2sbr!4v1775683529936!5m2!1spt-BR!2sbr" 
+                    width="600" 
+                    height="450" 
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                />
+
+            </div>
+        </section>
+    )
+}
+```
+No terceiro section retornamos o código base dele, apenas dividindo por linha os valores do iframe para maior facilidade quando houver a necessidade de alteração dos mesmos.
+
+#### indexcard.js
+```javascript
+import Link from 'next/link';
+
+export default function indexCard({ href, imageSrc, imageAlt, title, description }) {
+  return (
+    <section>
+      <header>
+        <Link href={href}>
+          <img 
+            src={imageSrc} 
+            alt={imageAlt} 
+            className="imgcards" 
+          />
+        </Link>
+      </header>
+      <article>
+        <h3 className="titulosection1">{title}</h3>
+        <p className="textocards">{description}</p>
+      </article>
+    </section>
+  );
+}
+```
+No indexcard.js retornamos a função indexCard com os próprios props no lugar dos valores para alterar eles diretamente na página principal ao criar uma constante (explicação mais a frente no tópico da page.js da Home.
+
+#### indexcarrossel.js
+```javascript
+'use client';
+import Image from 'next/image';
+import { useEffect } from 'react';
+
+    
+
+
+    export default function IndexCarrossel() {
+        useEffect(() => {
+            const slides = document.querySelectorAll(".slide");
+            const next = document.querySelector(".next");
+            const prev = document.querySelector(".prev");
+
+            let index = 0;
+
+            function mostrarSlide(i) {
+                slides.forEach(slide => slide.classList.remove("ativo"));
+                slides[i].classList.add("ativo");
+            }
+
+            next.addEventListener("click", () => {
+                index = (index + 1) % slides.length;
+                mostrarSlide(index);
+            });
+
+            prev.addEventListener("click", () => {
+                index = (index - 1 + slides.length) % slides.length;
+                mostrarSlide(index);
+            });
+
+
+            setInterval(() => {
+                index = (index + 1) % slides.length;
+                mostrarSlide(index);
+            }, 5000);
+        }, []);
+
+        return (
+        
+
+        <section className="carrossel">
+            <Image 
+                src="/capabiblioteca.png" 
+                alt="Capa da Biblioteca com o nome 'Biblioteca Rick Riordan - Desde 1976', atrás da escrita, duas pessoas conversando em meio a um corredor entre estantes de livros"
+                className="slide ativo" 
+                fill
+                priority
+            />
+            <Image 
+                src="/capa2.png" 
+                alt="Espaço da biblioteca com bancos, estantes de livros e janelas." 
+                className="slide" 
+                fill 
+            />
+            <Image 
+                src="/capa3.png" 
+                alt="Diversas estantes de livros separadas por corredores, se desfocando conforme a distância." 
+                className="slide" 
+                fill 
+            />
+
+            <button className="prev">❮</button>
+            <button className="next">❯</button>
+        </section>
+    )
+}
+```
+No indexcarrossel.js, importamos e utilizamos o useEffect para rodar o javascript dentro do nextjs, também havendo a utilização do 'use client' para definir que o código possui interatividade no navegador. 
+Já na hora de retornar o html, utilizamos o "fill" no Image para a imagem preencher todo o espaço do contâiner pai, sem a necessidade de definir tamanho, além de utilizar o priority na imagem de capa principal do carrossel, pré-carregando a mesma para melhorar o tempo de carregamento dela.
+
+#### tituloinicial.js
+```javascript
+export default function TituloInicial({texto}) {
+    return (
+        <h1 className="tituloinicial">{texto}</h1>
+    )
+}
+```
+No tituloinicial.js, retornamos a função com um prop para alterar o texto em cada page.js, visto que, toda página tem um título na hora que entramos nela.
