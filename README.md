@@ -46,3 +46,63 @@ Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas 
 Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário. Outro ponto importante é o uso do código "export default function(){return}", ele é uma estrutura de exportação padrão utilizada no next.js, servindo para criar aplicações rápidas com funcionalidades específicas.
 
 #### acervolivro.js
+
+
+#### contatoform.js
+```javascript
+export default function ContatoForm() {
+    return (
+        <form className="formcontato">
+            <label htmlFor="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="Nome:" autoFocus required />
+
+            <label htmlFor="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="email@dominio.com:" required />
+            
+            <label htmlFor="assunto">Assunto</label>
+            <input type="text" name="assunto" id="assunto" placeholder="Assunto" required />
+
+            <label htmlFor="areatexto">Deixe a sua mensagem!</label>
+            <textarea name="message" rows="6" cols="30" id="areatexto" placeholder="Deixe a sua mensagem" required></textarea>
+            
+            <button type="submit" value="Enviar" id="envio"> Enviar </button>
+        </form>
+    )
+}
+```
+No contatoform.js utilizamos o código do formulário de contato e alteramos a sintaxe de alguns pontos para a funcionalidade do mesmo, o class passa a se chamar className, o for vira htmlFor e o input passa a ter a necessidade de fechar "/".
+
+#### footer.js
+```javascript
+import Image from 'next/image';
+
+function MembroEquipe({ src, nome }) {
+    return (
+        <figure className="footerfigure">
+            <Image 
+                src={src} 
+                alt={nome} 
+                className="footerimgequipe" 
+                width={150} 
+                height={150} 
+            />
+            <figcaption className="footernomealuno">{nome}</figcaption>
+        </figure>
+    );
+}
+
+export default function Footer() {
+    return (
+        <footer className="footerprincipal">
+            <p className="footertexto" style={{ marginBottom: '30px' }}>R. dos Pinheiros, 513 - Pinheiros, São Paulo - SP, 05422-010</p>
+            <p className="footertexto">Desenvolvido por:</p>
+            <section className="footersection">
+                <MembroEquipe src="/iconeguilherme.png" nome="Guilherme Pinho" />
+                <MembroEquipe src="/iconemoabe.png" nome="Moabe Guedes" />
+                <MembroEquipe src="/iconeryan.png" nome="Ryan Sousa" />
+            </section>
+        </footer>
+    )
+}
+```
+No footer.js, além do export default function, também utilizamos uma função à parte para reduzir, organizar e reutilizar o código com a imagem e nome dos membros da equipe, fizemos isso a partir do uso de props, onde o componente filho recebe o conteúdo do componente pai, criando nomes como "src" e "nome" que são genéricos e podem ser alterados ao passarmos o valor para o componente pai, como é visto em "<MembroEquipe src="/iconemoabe.png" nome="Moabe Guedes" />"
