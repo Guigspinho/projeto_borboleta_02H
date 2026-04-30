@@ -46,7 +46,65 @@ Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas 
 Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário. Outro ponto importante é o uso do código "export default function(){return}", ele é uma estrutura de exportação padrão utilizada no next.js, servindo para criar aplicações rápidas com funcionalidades específicas.
 
 #### acervolivro.js
+```javascript
+import Image from 'next/image';
 
+function Livro({imgsrc, altlivro, nomelivro, anovolume }) {
+    return (
+        <section>
+            <Image src={imgsrc} alt={altlivro} className="imgcardsacervo" width={300} height={200} />
+            <article>
+                <h3 className="titulosection1">{nomelivro}</h3>
+                <p className="textocards">{anovolume}</p>
+            </article>
+        </section>
+    );
+}
+
+export default function AcervoLivros() {
+    return (
+        <section class="sectioncardsacervo">
+            <Livro 
+                imgsrc="/livro1.jpg"
+                altlivro="Capa do mangá My Hero Academia volume 42"
+                nomelivro="My Hero Academia volume" 
+                anovolume="Volume 42. 2025" 
+            />
+
+            <Livro 
+                imgsrc="/livro2.jpg"
+                altlivro="Capa do mangá Jujutsu Kaisen volume 1"
+                nomelivro="Jujutsu Kaisen" 
+                anovolume="Volume 1. 2020" 
+            />
+
+            <Livro
+                imgsrc="/livro3.jpg"
+                altlivro="Capa do livro Percy Jackson e o Ladrão de Raios"
+                nomelivro="Percy Jackson e o Ladrão de Raios" 
+                anovolume="Volume 1. 2005" 
+            />
+
+            <Livro
+                imgsrc="/livro4.jpg"
+                altlivro="Capa do livro O Senhor dos Anéis: A Sociedade do Anel"
+                nomelivro="O Senhor dos Anéis: A Sociedade do Anel" 
+                anovolume="Parte 1. 1954" 
+            />
+
+            <Livro 
+                imgsrc="/livro5.jpg"
+                altlivro="Capa do livro O Senhor dos Anéis: As Duas Torres"
+                nomelivro="O Senhor dos Anéis: As Duas Torres" 
+                anovolume="Parte 2. 1954" 
+            />
+
+
+        </section>
+    )
+}
+```
+No acervo, começamos importando o componente Image do NextJs, ele é usado no lugar da tag <img>. Logo após isso, criamos uma função Livro, que recebe parâmetros (props) como: imgsrc - caminho da imagem; altlivro - texto alternativo da imagem; nomelivro - nome do livro; anovolume - volume e ano do livro. Depois disso, ele retorna o componente Image, que nele renderiza a imagem do livro, o titulo do livro que está em h3 e um texto com volume e ano do livro. Logo após, o componente principal, que é o AcervoLivros sendo chamado no export default function. Depois disso, colocamos a estrutura dentro de um className chamado sectioncardacervo. E por fim, fazemos a reutilização do componente, onde usamos o componente Livro varias vezes para criar um card (cada <Livro /> cria um card diferente.)
 
 #### contatoform.js
 ```javascript
@@ -106,6 +164,51 @@ export default function Footer() {
 }
 ```
 No footer.js, além do export default function, também utilizamos uma função à parte para reduzir, organizar e reutilizar o código com a imagem e nome dos membros da equipe, fizemos isso a partir do uso de props, onde o componente filho recebe o conteúdo do componente pai, criando nomes como "src" e "nome" que são genéricos e podem ser alterados ao passarmos o valor para o componente pai, como é visto em "<MembroEquipe src="/iconemoabe.png" nome="Moabe Guedes" />". Ao migrar para o nextjs, também passamos a ter a necessidade de passar os valores de width e height para o Image e o uso de chaves duplas para utilizar style inline.
+
+#### index2section.js
+```javascript
+import Image from 'next/image';
+
+export default function Section2({ 
+    imgEvento, altEvento, tituloEvento, textoEvento,
+    imgLivro, altLivro, tituloLivro, textoLivro 
+}) {
+    return (
+        <section className="sectionpromocaoelivros"> 
+            <Image 
+                src={imgEvento} 
+                alt={altEvento} 
+                className="imgsection2" 
+                width={600} 
+                height={400} 
+            />
+            <article className="bloco1section2">
+                <h3 className="titulo1section2">{tituloEvento}</h3>
+                <p className="textosection2">{textoEvento}</p>
+            </article>
+            
+            <div className="linhavertical"></div>  
+            <div className="linhahorizontal"></div>
+
+            <article className="bloco2section2">
+                <h3 className="titulo2section2">{tituloLivro}</h3>
+                <p className="textosection2">{textoLivro}</p>
+            </article>
+            <Image 
+                src={imgLivro} 
+                alt={altLivro} 
+                className="imgsection2" 
+                width={600} 
+                height={400} 
+            />
+        </section>
+    )
+}
+```
+No index 2, começamos com a importação do componente Image do NextJs. Logo em seguida, criamos um componente reutilizável. Ele recebe 8 props, que são duas partes:
+parte do evento: imgEvento, altEvento, tituloEvento e textoEvento;
+parte do livro: imgLivro, altLivro, tituloLivro e textoLivro.
+Depois, começamos com a estrutura geral utilizando o section, que é o container principal. Em seguida, escrevemos a primeira parte (Evento) onde mostra a imagem do evento. Nele colocamos altura, largura, src, alt e className. E logo a baixo, usamos article, para mostrar o titulo e a descrição do livro. Colocamos também elementos visuais (divisores), nele tem div's que são só para estilo (linha vertical e horizontal). E para finalizar, fazemos a segunda parte (livro), nele colocamos um article que exibe o texto do livro e em seguida, abrimos um Image para exibir a imagem do livro.
 
 #### index3section.js
 ```javascript
@@ -232,6 +335,78 @@ import { useEffect } from 'react';
 No indexcarrossel.js, importamos e utilizamos o useEffect para rodar o javascript dentro do nextjs, também havendo a utilização do 'use client' para definir que o código possui interatividade no navegador. 
 Já na hora de retornar o html, utilizamos o "fill" no Image para a imagem preencher todo o espaço do contâiner pai, sem a necessidade de definir tamanho, além de utilizar o priority na imagem de capa principal do carrossel, pré-carregando a mesma para melhorar o tempo de carregamento dela.
 
+#### programacaocard.js
+```javascript
+import Image from 'next/image';
+
+function Card({imgsrc, altevento, tipodeevento, nomedoevento, status }) {
+    return (
+        <article className="programacaoeventos">
+            <Image src={imgsrc} alt={altevento} className="imgprogramacaoeventos" width={300} height={200} />
+            <h4 className="h4tituloprogramacao"> {tipodeevento} </h4>
+            <h3 className="h3tituloprogramacao"> {nomedoevento} </h3>
+            <p className="ptituloprogramacao"> {status} </p>
+        </article>
+    );
+}
+
+export default function ProgramacaoCard() {
+    return (
+        <section className="grid_programacao">
+            <Card 
+                imgsrc="/saraudajuventude.jpg"
+                altevento="Sarau da Juventude"
+                tipodeevento="EVENTO PRESENCIAL" 
+                nomedoevento="Sarau da Juventude" 
+                status="Inscrições Abertas!" 
+            />
+
+            <Card 
+                imgsrc="/clubedolivro.jpg"
+                altevento="Grupo de pessoas discutindo sobre a leitura"
+                tipodeevento="EVENTO PRESENCIAL" 
+                nomedoevento="Clube do Livro" 
+                status="Inscrições Abertas!" 
+            />
+
+            <Card
+                imgsrc="/oficinadecolagem.png"
+                altevento="Colagem"
+                tipodeevento="EVENTO PRESENCIAL" 
+                nomedoevento="Oficina de colagem" 
+                status="Inscrições Encerradas!" 
+            />
+            
+            <Card
+                imgsrc="/oficinadecolagem.png"
+                altevento="Colagem"
+                tipodeevento="EVENTO PRESENCIAL" 
+                nomedoevento="Oficina de colagem" 
+                status="Inscrições Encerradas!" 
+            />
+
+            <Card 
+                imgsrc="/saraudajuventude.jpg"
+                altevento="Sarau da Juventude"
+                tipodeevento="EVENTO PRESENCIAL" 
+                nomedoevento="Sarau da Juventude" 
+                status="Inscrições Abertas!" 
+            />
+
+            <Card
+                imgsrc="/clubedolivro.jpg"
+                altevento="Grupo de pessoas discutindo sobre a leitura"
+                tipodeevento="EVENTO PRESENCIAL" 
+                nomedoevento="Clube do Livro" 
+                status="Inscrições Abertas!" 
+            />
+        </section>  
+        
+    )
+}
+```
+Na programação, começamos com a importação do componente Image no NextJs. Logo depois, fizemos uma função Card onde ele recebe como props: imgsrc, altevento, tipodeevento, nomedoevento e status. Após isso, abrimos um article onde nele, cada card é um article. Em seguida abrimos um Image tendo configurações padrão de uma imagem (altura, largura, className, src e alt). Em seguida tem um conteúdo, que seria o tipo do evento, nome e status. Logo após, abrimos um export default e em seguida uma section com className. Pra finalizar, fizemos uma repetição de cards, onde nele abrimos <Card> e dentro dele tem todos os parâmetros da função que colocamos antes. Cada um desse vira um card na tela.
+
 #### tituloinicial.js
 ```javascript
 export default function TituloInicial({texto}) {
@@ -240,6 +415,7 @@ export default function TituloInicial({texto}) {
     )
 }
 ```
+
 No tituloinicial.js, retornamos a função com um prop para alterar o texto em cada page.js, visto que, toda página tem um título na hora que entramos nela.
 
 ### globals.css e page.module.css
