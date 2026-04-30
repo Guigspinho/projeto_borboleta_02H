@@ -37,6 +37,12 @@ Na página de contato, temos um formulário para que o usuário possa entrar em 
 Na página de eventos, temos uma imagem representando os eventos realizados por empresas dentro da biblioteca, com um cabeçalho “convidando” o usuário e uma descrição do que pode ser feito no local. Abaixo tem um formulário para que a biblioteca receba propostas de eventos, com os dados do realizador, informações de data, horário e quantidade de convidados, entre outros.
 
 
-## DOCUMENTAÇÃO DA MIGRAÇÃO DA HOME PAGE PRA NEXTJS
+## Tutorial da migração do site para nextjs
 
+### Public
 Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas as imagens para a pasta public pois é nessa pasta que elas ficam disponíveis para todo o projeto.
+
+### Components
+Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário.
+
+#### acervolivro.js
