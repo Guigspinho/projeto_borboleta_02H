@@ -43,6 +43,6 @@ Na página de eventos, temos uma imagem representando os eventos realizados por 
 Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas as imagens para a pasta public pois é nessa pasta que elas ficam disponíveis para todo o projeto.
 
 ### Components
-Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário.
+Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário. Outro ponto importante é o uso do código "export default function(){return}", ele é uma estrutura de exportação padrão utilizada no next.js, servindo para criar aplicações rápidas com funcionalidades específicas.
 
 #### acervolivro.js
