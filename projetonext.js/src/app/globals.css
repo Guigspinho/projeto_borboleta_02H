@@ -101,6 +101,8 @@ time, mark, audio, video {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    margin-left: auto;
+    
 }
 
 .dark-mode #mudar_tema {
