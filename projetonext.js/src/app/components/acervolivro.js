@@ -14,7 +14,7 @@ function Livro({imgsrc, altlivro, nomelivro, anovolume }) {
 
 export default function AcervoLivros() {
     return (
-        <section class="sectioncardsacervo">
+        <section className="sectioncardsacervo">
             <Livro 
                 imgsrc="/livro1.jpg"
                 altlivro="Capa do mangá My Hero Academia volume 42"
@@ -41,13 +41,6 @@ export default function AcervoLivros() {
                 altlivro="Capa do livro O Senhor dos Anéis: A Sociedade do Anel"
                 nomelivro="O Senhor dos Anéis: A Sociedade do Anel" 
                 anovolume="Parte 1. 1954" 
-            />
-
-            <Livro 
-                imgsrc="/livro5.jpg"
-                altlivro="Capa do livro O Senhor dos Anéis: As Duas Torres"
-                nomelivro="O Senhor dos Anéis: As Duas Torres" 
-                anovolume="Parte 2. 1954" 
             />
 
 
