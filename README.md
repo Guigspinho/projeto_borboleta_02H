@@ -45,6 +45,196 @@ Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas 
 ### Components
 Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário. Outro ponto importante é o uso do código "export default function(){return}", ele é uma estrutura de exportação padrão utilizada no next.js, servindo para criar aplicações rápidas com funcionalidades específicas.
 
+### mudartema.js
+Esse código cria um componente React no Next.js responsável por alternar entre tema claro e tema escuro da aplicação. Usamos:
+
+```jsx
+"use client";
+```
+Essa instrução diz ao framework que esse componente será executado no lado do cliente, ou seja, no navegador do usuário. Isso é necessário porque o código utiliza recursos que só existem no navegador, como `localStorage`, `document.body` e os hooks `useState` e `useEffect`. Sem `"use client"`, o Next.js tentaria renderizar esse componente no servidor, e aí ocorreria erro porque o servidor não possui acesso ao DOM nem ao armazenamento local do navegador.
+Depois disso, importamos algumas funcionalidades:
+
+```jsx
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+```
+
+O `useEffect` e o `useState` vêm do React. O `useState` serve para criar estados internos no componente, permitindo armazenar valores que podem mudar durante a execução. Já o `useEffect` é usado para executar efeitos colaterais, como acessar o `localStorage` ou modificar elementos da página. Em seguida, `Image` é importado do Next.js para otimização automática de imagens, algo que melhora desempenho e carregamento. O `Link` também vem do Next.js e é utilizado para navegação entre páginas sem recarregar o site inteiro.
+
+A função principal do componente se chama `MudarTema`:
+```jsx
+export default function MudarTema() {
+```
+Ela é exportada como padrão usando `export default`, permitindo que esse componente seja importado em qualquer outro lugar da aplicação.
+Dentro dessa função, o primeiro elemento importante é:
+
+```jsx
+const [dark, setDark] = useState(false);
+```
+
+Aqui o React cria um estado chamado `dark`. Esse estado armazenará um valor booleano, ou seja, `true` ou `false`. O valor inicial é `false`, indicando que, por padrão, o tema começa como claro. A função `setDark` é responsável por atualizar esse estado quando o usuário trocar de tema.
+
+Depois aparece o `useEffect`:
+```jsx
+useEffect(() => {
+  const tema = localStorage.getItem("theme");
+
+  if (tema === "dark") {
+    setDark(true);
+    document.body.classList.add("dark-mode");
+  }
+}, []);
+```
+Esse hook executa um código assim que o componente é carregado na tela. O segundo parâmetro é `[]`, um array vazio, o que significa que esse efeito roda apenas uma vez, no momento da montagem do componente.
+Dentro dele, o código pega o valor salvo no navegador usando:
+
+```jsx
+localStorage.getItem("theme");
+```
+
+O `localStorage` é um armazenamento persistente do navegador, permitindo guardar dados mesmo após fechar a página.
+O valor salvo é colocado na constante `tema`. Em seguida, existe uma verificação:
+
+```jsx
+if (tema === "dark")
+```
+
+Isso significa que, se o usuário já tiver escolhido o modo escuro anteriormente, o sistema irá restaurar essa preferência automaticamente.
+Nesse caso:
+
+```jsx
+setDark(true);
+```
+
+altera o estado para verdadeiro, indicando que o tema atual é escuro.
+Logo depois:
+
+```jsx
+document.body.classList.add("dark-mode");
+```
+adiciona a classe CSS `dark-mode` ao elemento `<body>` da página. Isso normalmente é usado para ativar estilos escuros definidos no CSS.
+Por exemplo:
+
+```css
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+```
+
+Assim, toda a aparência do site mudaria.
+A seguir vem a função `toggleTheme()`:
+
+```jsx
+function toggleTheme() {
+```
+
+Ela é responsável pela troca de tema quando o botão é clicado.
+Dentro dela, primeiro é criada a constante:
+
+```jsx
+const novo = !dark;
+```
+O operador `!` significa negação. Então: Se `dark` for `false`, `novo` será `true` ; Se `dark` for `true`, `novo` será `false` .Em outras palavras, essa linha inverte o estado atual do tema. Depois:
+
+```jsx
+setDark(novo);
+```
+atualiza o estado do React para refletir a nova escolha. Logo após, existe outro `if`:
+```jsx
+if (novo)
+```
+Se o novo valor for verdadeiro, significa que o usuário ativou o modo escuro.
+Então o código adiciona a classe:
+
+```jsx
+document.body.classList.add("dark-mode");
+```
+e salva a preferência no navegador usando:
+
+```jsx
+localStorage.setItem("theme", "dark");
+```
+Isso garante que, mesmo ao recarregar a página, o tema escuro continue ativo.
+Caso `novo` seja falso, o bloco `else` será executado:
+```jsx
+else {
+  document.body.classList.remove("dark-mode");
+  localStorage.setItem("theme", "light");
+}
+```
+Nesse caso, o código remove a classe `"dark-mode"` do `body`, fazendo o site voltar ao estilo claro, e salva `"light"` no `localStorage`.
+Na parte do retorno JSX:
+```jsx
+return (
+```
+o componente começa retornando um fragmento React:
+```jsx
+<>
+</>
+```
+Isso serve para agrupar vários elementos sem criar uma `<div>` extra no HTML.
+Dentro dele, aparece primeiro o componente `Link`:
+
+```jsx
+<Link href="/">
+```
+
+Isso cria um link para a página inicial do site.
+Dentro desse link há um componente `Image`:
+
+```jsx
+<Image
+  src={dark ? "/logorickriordan-dark.png" : "/logorickriordan.png"}
+```
+A propriedade `src` usa um operador ternário. Se `dark` for verdadeiro:
+```jsx
+"/logorickriordan-dark.png"
+```
+Caso contrário:
+```jsx
+"/logorickriordan.png"
+```
+Isso faz a logo mudar automaticamente junto com o tema. Depois temos:
+
+```jsx
+alt="Logo"
+```
+
+que fornece descrição alternativa da imagem, importante para acessibilidade. As propriedades:
+
+```jsx
+width={150}
+height={150}
+```
+
+definem o tamanho da imagem. Enquanto:
+
+```jsx
+className="logo"
+```
+aplica uma classe CSS para estilização. Depois vem o botão responsável por alternar o tema:
+
+```jsx
+<button id="mudar_tema" onClick={toggleTheme}>
+```
+
+O evento:
+
+```jsx
+onClick={toggleTheme}
+```
+
+faz com que a função `toggleTheme` seja executada quando o usuário clicar no botão.
+Dentro do botão há outra renderização condicional:
+
+```jsx
+{dark ? (...) : (...)}
+```
+
+Se `dark` for verdadeiro, será exibido um ícone SVG de lua, representando o modo escuro. Caso contrário, será mostrado um ícone SVG de sol, representando o modo claro.
+
 #### acervolivro.js
 ```javascript
 import Image from 'next/image';
