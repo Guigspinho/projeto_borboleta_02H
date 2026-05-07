@@ -534,7 +534,7 @@ export default function Home() {
   );
 }
 ```
-A page.js que está apenas dentro do src/app é a Home do site. Importamos todos os componentes que serão utilizados nessa página do site, após isso, criamos uma const com os valores dos cards do primeiro section (atribuindo um endereço, uma imagem, um alt, um título e uma descrição para cada uma). Por fim, retornamos o site colocando em ordem cada componente, a tag de main e inserindo os valores dos props para o que faltou.
+A page.js que está apenas dentro do src/app é a Home do site. Importamos todos os componentes que serão utilizados nessa página do site, após isso, criamos uma const com os valores dos cards do primeiro section (atribuindo um endereço, uma imagem, um alt, um título e uma descrição para cada uma). Por fim, retornamos o site colocando em ordem cada componente, a tag de main e inserindo os valores dos props para o que faltou. Também utilizamos <> e </>, que serve para agrupar uma lista de elementos filhos, sem uma semântica que adicione um elemento no DOM, como seria o caso de uma <div>
 
 ### acervo(pasta) - page.js
 ```javascript
