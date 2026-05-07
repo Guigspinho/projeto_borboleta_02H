@@ -534,4 +534,58 @@ export default function Home() {
   );
 }
 ```
-A page.js que está apenas dentro do src/app é a Home do site. Importamos todos os componentes que serão utilizados no site, após isso, criamos uma const com os valores dos cards do primeiro section (atribuindo um endereço, uma imagem, um alt, um título e uma descrição para cada uma). Por fim, retornamos o site colocando em ordem cada componente, a tag de main e inserindo os valores dos props para o que faltou.
+A page.js que está apenas dentro do src/app é a Home do site. Importamos todos os componentes que serão utilizados nessa página do site, após isso, criamos uma const com os valores dos cards do primeiro section (atribuindo um endereço, uma imagem, um alt, um título e uma descrição para cada uma). Por fim, retornamos o site colocando em ordem cada componente, a tag de main e inserindo os valores dos props para o que faltou.
+
+### acervo(pasta) - page.js
+```javascript
+import TituloInicial from '../components/tituloinicial';
+import AcervoLivros from '../components/acervolivro';
+
+export default function Acervo() {
+    return (
+        <>
+            <TituloInicial texto="Nosso Acervo" />
+            <main>
+                <AcervoLivros />
+            </main>
+        </>
+    );
+}
+```
+A partir de agora temos um page.js para cada página do site, cada uma fica dentro de uma pasta com o nome dessa página, nesse caso, "acervo". Por ser uma página mais simples, utilizamos apenas o <main> e dois componentes: o <TítuloInicial /> para inserir e dar um valor para o título no início da página e o <AcervoLivros />, diferentemnte da home do site, os livros do acervo já definidos dentro do próprio componente, sem a necessidade de passar os valores por uma const dentro do arquivo page.js.
+
+### contato(pasta) - page.js
+```javascript
+import TituloInicial from '../components/tituloinicial';
+import ContatoForm from '../components/contatoform';
+
+export default function Contato() {
+    return (
+        <>
+            <TituloInicial texto="Contato" />
+            <main>
+                <ContatoForm />
+            </main>
+        </>
+    );
+}
+```
+Seguimos a mesma estrutura da página de acervo. Importamos os componentes, damos um valor ao <TituloInicial /> e inserimos o componente principal na main.
+
+### contato(pasta) - page.js
+```javascript
+import ProgramacaoCard from '../components/programacaocard';
+import TituloInicial from '../components/tituloinicial';
+
+export default function Programacao() {
+    return (
+        <>
+            <TituloInicial texto="Programação" />
+            <main>
+                <ProgramacaoCard />
+            </main>
+        </>
+    );
+}
+```
+Seguimos a mesma estrutura das páginas anteriores.
