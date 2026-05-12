@@ -1,21 +1,22 @@
 'use client';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import styles from "./IndexCarrossel.module.css";
 
     
 
 
     export default function IndexCarrossel() {
         useEffect(() => {
-            const slides = document.querySelectorAll(".slide");
-            const next = document.querySelector(".next");
-            const prev = document.querySelector(".prev");
+            const slides = document.querySelectorAll(`.${styles.slide}`);
+            const next = document.querySelector(`.${styles.next}`);
+            const prev = document.querySelector(`.${styles.prev}`);
 
             let index = 0;
 
             function mostrarSlide(i) {
-                slides.forEach(slide => slide.classList.remove("ativo"));
-                slides[i].classList.add("ativo");
+                slides.forEach(slide => slide.classList.remove(styles.ativo));
+                slides[i].classList.add(styles.ativo);
             }
 
             next.addEventListener("click", () => {
@@ -38,29 +39,29 @@ import { useEffect } from 'react';
         return (
         
 
-        <section className="carrossel">
+        <section className={styles.carrossel}>
             <Image 
                 src="/capabiblioteca.png" 
                 alt="Capa da Biblioteca com o nome 'Biblioteca Rick Riordan - Desde 1976', atrás da escrita, duas pessoas conversando em meio a um corredor entre estantes de livros"
-                className="slide ativo" 
+                className={styles.slide + " " + styles.ativo} 
                 fill
                 priority
             />
             <Image 
                 src="/capa2.png" 
                 alt="Espaço da biblioteca com bancos, estantes de livros e janelas." 
-                className="slide" 
+                className={styles.slide} 
                 fill 
             />
             <Image 
                 src="/capa3.png" 
                 alt="Diversas estantes de livros separadas por corredores, se desfocando conforme a distância." 
-                className="slide" 
+                className={styles.slide} 
                 fill 
             />
 
-            <button className="prev">❮</button>
-            <button className="next">❯</button>
+            <button className={styles.prev}>❮</button>
+            <button className={styles.next}>❯</button>
         </section>
     )
 }

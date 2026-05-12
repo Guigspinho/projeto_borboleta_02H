@@ -196,45 +196,6 @@ body {
 
 
 
-/* CSS do Carrossel*/
-
-.carrossel {
-    position: relative;
-    width: 100%;
-    height: 600px;
-    
-}
-
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.slide.ativo {
-    opacity: 1;
-}
-
-/* Botões */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 30px;
-    background: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-
 /* PÁGINA PROGRAMAÇÃO */
 
 .grid_programacao {
