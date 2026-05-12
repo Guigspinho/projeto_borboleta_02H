@@ -1,8 +1,8 @@
-import IndexCarrossel from "./components/indexcarrossel";
-import TituloInicial from "./components/tituloinicial";
-import Indexcard from "./components/indexcard";
-import Section2 from "./components/index2section";
-import Section3 from "./components/index3section";
+import IndexCarrossel from "./components/IndexCarrossel/indexcarrossel";
+import TituloInicial from "./components/TituloInicial/tituloinicial";
+import Indexcard from "./components/IndexCard/indexcard";
+import Section2 from "./components/Index2Section/index2section";
+import Section3 from "./components/Index3Section/index3section";
 
 export default function Home() {
 
