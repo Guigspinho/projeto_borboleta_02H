@@ -1,0 +1,30 @@
+.formcontato {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    margin: 30px auto 80px;
+    padding: 30px 15px;
+    background-color: var(--formcontato-color);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.formcontato input, 
+.formcontato textarea {
+    padding:5px;
+    margin:6px 0px 20px;
+    width: 85%;
+}
+
+.formcontato #envio {
+    font-family:'Trebuchet MS';
+    border-radius:30px;
+    padding: 10px 40px;
+    text-transform:uppercase;
+    border:solid 2px;
+    font-weight:bold;
+}

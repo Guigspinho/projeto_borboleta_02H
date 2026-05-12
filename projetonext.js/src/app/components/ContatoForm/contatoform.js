@@ -1,6 +1,8 @@
+import styles from "./ContatoForm.module.css";
+
 export default function ContatoForm() {
     return (
-        <form className="formcontato">
+        <form className={styles.formcontato}>
             <label htmlFor="nome">Nome</label>
             <input type="text" name="nome" id="nome" placeholder="Nome:" autoFocus required />
 
