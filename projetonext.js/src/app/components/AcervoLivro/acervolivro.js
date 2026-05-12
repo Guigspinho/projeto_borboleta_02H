@@ -1,12 +1,13 @@
 import Image from 'next/image';
+import styles from "./acervolivro.module.css"
 
 function Livro({imgsrc, altlivro, nomelivro, anovolume }) {
     return (
         <section>
-            <Image src={imgsrc} alt={altlivro} className="imgcardsacervo" width={300} height={200} />
+            <Image src={imgsrc} alt={altlivro} className={styles.imgcardsacervo} width={300} height={200} />
             <article>
-                <h3 className="titulosection1">{nomelivro}</h3>
-                <p className="textocards">{anovolume}</p>
+                <h3 className={styles.titulosection1}>{nomelivro}</h3>
+                <p className={styles.textocards}>{anovolume}</p>
             </article>
         </section>
     );
@@ -14,7 +15,7 @@ function Livro({imgsrc, altlivro, nomelivro, anovolume }) {
 
 export default function AcervoLivros() {
     return (
-        <section className="sectioncardsacervo">
+        <section className={styles.sectioncardsacervo}>
             <Livro 
                 imgsrc="/livro1.jpg"
                 altlivro="Capa do mangá My Hero Academia volume 42"
