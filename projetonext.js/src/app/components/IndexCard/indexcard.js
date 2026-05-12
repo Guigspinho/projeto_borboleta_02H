@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import styles from "./IndexCard.module.css";
+
 
 export default function indexCard({ href, imageSrc, imageAlt, title, description }) {
   return (
@@ -8,13 +10,13 @@ export default function indexCard({ href, imageSrc, imageAlt, title, description
           <img 
             src={imageSrc} 
             alt={imageAlt} 
-            className="imgcards" 
+            className={styles.imgcards} 
           />
         </Link>
       </header>
       <article>
-        <h3 className="titulosection1">{title}</h3>
-        <p className="textocards">{description}</p>
+        <h3 className={styles.titulosection1}>{title}</h3>
+        <p className={styles.textocards}>{description}</p>
       </article>
     </section>
   );

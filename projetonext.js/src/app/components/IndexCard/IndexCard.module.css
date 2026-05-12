@@ -1,0 +1,21 @@
+.textocards {
+    max-width: 420px;
+    display: block;
+    margin: 0 auto 10px auto;
+    text-align: center;
+    line-height: 1.3;
+}
+
+
+.imgcards{
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px; /*Espaçar a imagem da legenda*/
+    border-radius: 25px;
+}
+
+.titulosection1 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 0.6rem;
+}
