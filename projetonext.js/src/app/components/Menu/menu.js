@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import MudarTema from './mudartema';
+import MudarTema from '../MudarTema/mudartema';
 
 export default function Menu() {
   return (

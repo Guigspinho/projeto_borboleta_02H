@@ -1,5 +1,5 @@
-import TituloInicial from '../components/tituloinicial';
-import AcervoLivros from '../components/acervolivro';
+import TituloInicial from '../components/TituloInicial/tituloinicial';
+import AcervoLivros from '../components/AcervoLivro/acervolivro';
 
 export default function Acervo() {
     return (
