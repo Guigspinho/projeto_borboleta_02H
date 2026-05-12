@@ -1,34 +1,35 @@
 import Image from 'next/image';
+import styles from "./Index2Section.module.css";
 
 export default function Section2({ 
     imgEvento, altEvento, tituloEvento, textoEvento,
     imgLivro, altLivro, tituloLivro, textoLivro 
 }) {
     return (
-        <section className="sectionpromocaoelivros"> 
+        <section className={styles.sectionpromocaoelivros}> 
             <Image 
                 src={imgEvento} 
                 alt={altEvento} 
-                className="imgsection2" 
+                className={styles.imgsection2} 
                 width={600} 
                 height={400} 
             />
-            <article className="bloco1section2">
-                <h3 className="titulo1section2">{tituloEvento}</h3>
-                <p className="textosection2">{textoEvento}</p>
+            <article className={styles.bloco1section2}>
+                <h3 className={styles.titulo1section2}>{tituloEvento}</h3>
+                <p className={styles.textosection2}>{textoEvento}</p>
             </article>
-            
-            <div className="linhavertical"></div>  
-            <div className="linhahorizontal"></div>
 
-            <article className="bloco2section2">
-                <h3 className="titulo2section2">{tituloLivro}</h3>
-                <p className="textosection2">{textoLivro}</p>
+            <div className={styles.linhavertical}></div>  
+            <div className={styles.linhahorizontal}></div>
+
+            <article className={styles.bloco2section2}>
+                <h3 className={styles.titulo2section2}>{tituloLivro}</h3>
+                <p className={styles.textosection2}>{textoLivro}</p>
             </article>
             <Image 
                 src={imgLivro} 
                 alt={altLivro} 
-                className="imgsection2" 
+                className={styles.imgsection2} 
                 width={600} 
                 height={400} 
             />
