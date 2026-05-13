@@ -1,36 +1,68 @@
-/* MENU*/
-    .menu {
-        flex-direction: column;
-        gap: 5px;
-        padding: 8px;
-    }
+/* Menu superior fixo na tela */
+.menu{ 
+    background-color: var(--menu-color);
+    padding: var(--spacing-small) var(--spacing-large);
 
-    .logo {
-        width: 80px;
-    }
+    position: sticky; /*menu fixo durante rolagem da página (position para fixar, width para preencher a tela inteira e top para grudar no topo da pagina)*/
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 
-    .links {
-        display: flex;
-        align-items: center; 
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
+    display: flex; /*flexbox para alinhar os itens horizontalmente, dando espaço e centralizando*/
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
 
-    .links a,
-    #mudar_tema {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2px 4px;
-        font-size: 12px;
-    }
-    #contato{
-        border: 1px solid var(--border-color); 
-        padding: 3px 6px;
-        font-weight: bold;
-        font-size: 14px;
-    }
-    #mudar_tema {
-        transform: scale(0.8);
-    }
+.links{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.links a,
+#mudar_tema {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo do menu superior */
+.logo {
+    height: auto;
+    width: 150px;
+}
+
+
+/* Fonte geral do menu superior */
+.links a{
+    text-decoration: none;
+    padding: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--text-color);
+
+}
+
+/* Botão de contato do menu superior */
+#contato{
+    border: 3px solid var(--border-color);
+    padding: 5px;
+    font-weight: bold;
+}
+.dark-mode #contato {
+    border: 3px solid white; /* borda branca no dark mode */
+}
+
+/* FIM DO MENU (linha 19) */
+
+.tituloinicial{
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
