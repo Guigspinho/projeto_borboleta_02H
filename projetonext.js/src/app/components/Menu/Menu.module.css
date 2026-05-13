@@ -24,7 +24,7 @@
 }
 
 .links a,
-#mudar_tema {
+.links .mudar_tema {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,20 +77,20 @@
     }
 
     .links a,
-    #mudar_tema {
+    .links .mudar_tema {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 2px 4px;
         font-size: 12px;
     }
-    #contato{
+    .botaocontato{
         border: 1px solid var(--border-color); 
         padding: 3px 6px;
         font-weight: bold;
         font-size: 14px;
     }
-    #mudar_tema {
+    .links .mudar_tema {
         transform: scale(0.8);
     }
 }

@@ -28,14 +28,14 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-#mudar_tema {
+.mudar_tema {
     color:var(--iconmudartema-color); /* modo claro */
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
 
-.dark-mode #mudar_tema {
+.dark-mode .mudar_tema {
     color:var(--iconmudartema-color); /* modo escuro */
 }
 

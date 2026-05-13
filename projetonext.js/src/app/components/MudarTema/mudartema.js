@@ -42,7 +42,7 @@ export default function MudarTema() {
         />
       </Link>
 
-      <button id="mudar_tema" onClick={toggleTheme}>
+      <button className={styles.mudar_tema} onClick={toggleTheme}>
          {dark ? (
           //dark)
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

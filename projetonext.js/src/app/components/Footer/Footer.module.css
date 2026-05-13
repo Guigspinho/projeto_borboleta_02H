@@ -30,3 +30,31 @@
 .footernomealuno{
     margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+    .footersection {
+        flex-direction: row; 
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap; 
+    }
+
+    .footerimgequipe {
+        width: 60px;
+        height: 60px;
+    }
+
+    .footernomealuno {
+        font-size: 11px;
+        text-align: center;
+    }
+    .footerfigure {
+    width: 80px; 
+    }
+
+
+    .footertexto {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+}

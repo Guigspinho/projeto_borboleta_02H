@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 import Link from 'next/link';
 import MudarTema from '../MudarTema/mudartema';
 import styles from './Menu.module.css';
