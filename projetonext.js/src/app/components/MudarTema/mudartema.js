@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./MudarTema.module.css";
 
 export default function MudarTema() {
   const [dark, setDark] = useState(false);
@@ -37,7 +38,7 @@ export default function MudarTema() {
           alt="Logo"
           width={150}
           height={150}
-          className="logo"
+          className={styles.logo}
         />
       </Link>
 
