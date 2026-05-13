@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from 'ProgramacaoCard.module.css';
+import styles from './ProgramacaoCard.module.css';
 
 function Card({imgsrc, altevento, tipodeevento, nomedoevento, status }) {
     return (

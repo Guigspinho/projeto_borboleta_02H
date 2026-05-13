@@ -1,4 +1,4 @@
-import styles from 'TituloInicial.module.css';
+import styles from './TituloInicial.module.css';
 
 export default function TituloInicial({texto}) {
     return (
