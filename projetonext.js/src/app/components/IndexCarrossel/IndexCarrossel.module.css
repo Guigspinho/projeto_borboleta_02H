@@ -31,3 +31,14 @@
 
 .prev { left: 10px; }
 .next { right: 10px; }
+
+@media (max-width: 768px) {
+    .carrossel {
+            height: 180px; 
+        }
+
+        .prev, .next {
+            font-size: 18px;
+            padding: 5px;
+        }
+    }

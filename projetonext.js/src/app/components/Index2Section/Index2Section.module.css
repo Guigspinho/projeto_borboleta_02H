@@ -56,3 +56,38 @@
     margin: 10px auto;
     display:none;
 }
+
+@media (max-width: 768px) {
+    .sectionpromocaoelivros {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    .imgsection2 {
+        max-width: 200px;
+        margin: 0 10px; 
+    }
+
+    .titulo1section2,
+    .titulo2section2 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .textosection2 {
+        font-size: 13px;
+        text-align: center;
+        text-indent: 0;
+        padding: 0 10px;
+        
+    }
+
+    .linhavertical {
+        display: none;
+    }
+
+    .linhahorizontal {
+        display: block;
+    }
+}

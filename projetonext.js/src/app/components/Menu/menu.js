@@ -14,7 +14,9 @@ export default function Menu() {
         <Link href="/eventos">EVENTOS</Link> 
         <Link href="/programacao">PROGRAMAÇÃO</Link> 
         <Link href="/acervo">ACERVO</Link> 
-        <Link href="/contato">CONTATO</Link> 
+        <Link href="/contato" className={styles.botaocontato}>
+          CONTATO
+        </Link>
       </nav>
     </header>
   );
