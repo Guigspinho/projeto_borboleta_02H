@@ -55,14 +55,3 @@
 .dark-mode #contato {
     border: 3px solid white; /* borda branca no dark mode */
 }
-
-/* FIM DO MENU (linha 19) */
-
-.tituloinicial{
-    font-size: 34px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 20px;
-}
-
