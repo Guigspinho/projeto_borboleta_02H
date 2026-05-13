@@ -1,5 +1,9 @@
-/* TÍTULO */
-    .tituloinicial {
-        font-size: 20px;
-        margin: 15px 0;
-    }
+/*Titulo*/
+
+.tituloinicial{
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
