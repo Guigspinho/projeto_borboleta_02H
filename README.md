@@ -42,6 +42,15 @@ Na página de eventos, temos uma imagem representando os eventos realizados por 
 ### Public
 Primeiramente, depois de instalar o projeto em nextjs fizemos o upload de todas as imagens para a pasta public pois é nessa pasta que elas ficam disponíveis para todo o projeto.
 
+### CSS
+
+#### globals.css
+No globals.css deixamos apenas o CSS que será utilizado em todo o site, que é o CSS Reset e as variáveis de cor e tamanho do site.
+
+#### .module.css
+Já nos .module.css, pegamos tudo o que estava no global anteriormente e separamos por componente, de tal forma que cada componente tenha uma página com o seu .js e um .module.css, onde tem o seu próprio css e, se necessário, seu media query. 
+Para isso ser possível, também é necessário que algumas alterações sejam feitas nos .js dos componentes, visto que, o CSS Modules transforma cada classe em uma classe com nome única. Como alterar o className="nomeclasse" para className={styles.nomeclasse} e importar o arquivo module.css com 'import styles from "./nomecomponente.module.css"'. No javascript também é preciso fazer alterações, em determinadas classes, mudando de .nomeclasse para `.${styles.nomeclasse}`.
+
 ### Components
 Para uma melhor organização e reutilização do código, migramos e dividimos todo o html e javascript em componentes. A partir disso, é possível perceber que a maioria dos componentes importam Link ou Image, isso serve para uma melhor otimização do site, fazendo as imagens carregarem automaticamente e permitindo uma navegação entre rotas para o usuário. Outro ponto importante é o uso do código "export default function(){return}", ele é uma estrutura de exportação padrão utilizada no next.js, servindo para criar aplicações rápidas com funcionalidades específicas.
 
