@@ -1,51 +1,49 @@
-import Image from 'next/image';
-import styles from "./AcervoLivro.module.css";
+import Image from 'next/image'
+import Link from 'next/link'
 
-function Livro({imgsrc, altlivro, nomelivro, anovolume }) {
-    return (
-        <section>
-            <Image src={imgsrc} alt={altlivro} className={styles.imgcardsacervo} width={300} height={200} />
-            <article>
-                <h3 className={styles.titulosection1}>{nomelivro}</h3>
-                <p className={styles.textocards}>{anovolume}</p>
-            </article>
-        </section>
-    );
-}
+import styles from './AcervoLivro.module.css'
+
+import { produtos } from '../data/produtosarray'
 
 export default function AcervoLivros() {
-    return (
-        <section className={styles.sectioncardsacervo}>
-            <Livro 
-                imgsrc="/livro1.jpg"
-                altlivro="Capa do mangá My Hero Academia volume 42"
-                nomelivro="My Hero Academia volume" 
-                anovolume="Volume 42. 2025" 
+  return (
+    <section className={styles.sectioncardsacervo}>
+
+      {produtos.map((livro) => (
+
+        <Link
+          key={livro.id}
+          href={`/produtos/${livro.id}`}
+        >
+
+          <section>
+
+            <Image
+              src={livro.imagem}
+              alt={livro.nome}
+              className={styles.imgcardsacervo}
+              width={300}
+              height={200}
             />
 
-            <Livro 
-                imgsrc="/livro2.jpg"
-                altlivro="Capa do mangá Jujutsu Kaisen volume 1"
-                nomelivro="Jujutsu Kaisen" 
-                anovolume="Volume 1. 2020" 
-            />
+            <article>
 
-            <Livro
-                imgsrc="/livro3.jpg"
-                altlivro="Capa do livro Percy Jackson e o Ladrão de Raios"
-                nomelivro="Percy Jackson e o Ladrão de Raios" 
-                anovolume="Volume 1. 2005" 
-            />
+              <h3 className={styles.titulosection1}>
+                {livro.nome}
+              </h3>
 
-            <Livro
-                imgsrc="/livro4.jpg"
-                altlivro="Capa do livro O Senhor dos Anéis: A Sociedade do Anel"
-                nomelivro="O Senhor dos Anéis: A Sociedade do Anel" 
-                anovolume="Parte 1. 1954" 
-            />
+              <p className={styles.textocards}>
+                {livro.volume}
+              </p>
 
+            </article>
 
+          </section>
 
-        </section>
-    )
+        </Link>
+
+      ))}
+
+    </section>
+  )
 }

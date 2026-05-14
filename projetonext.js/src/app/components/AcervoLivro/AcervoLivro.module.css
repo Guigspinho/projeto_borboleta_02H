@@ -21,7 +21,6 @@
     padding-bottom: 60px; /*Espaçar os 3 cards do 2º section*/
     background-color: var(--menu-color);
 }
-
 .sectioncardsacervo section {
     width: 250px;
     max-width: 100%;
