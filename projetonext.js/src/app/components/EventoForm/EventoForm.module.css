@@ -1,0 +1,22 @@
+.section-evento-form {
+    padding: 0 20px 60px;
+}
+
+.formcontato.evento-form {
+    max-width: 700px;
+    padding: 40px 30px;
+}
+.formcontato {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    margin: 30px auto 80px;
+    padding: 30px 15px;
+    background-color: var(--formcontato-color);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}

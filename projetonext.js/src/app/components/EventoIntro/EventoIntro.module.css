@@ -1,0 +1,14 @@
+.evento-intro {
+    max-width: 520px;
+    text-align: left;
+}
+
+.section-evento {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    padding: 60px 20px;
+    
+}
