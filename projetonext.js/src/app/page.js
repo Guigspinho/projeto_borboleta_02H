@@ -3,6 +3,7 @@ import TituloInicial from "./components/TituloInicial/tituloinicial";
 import Indexcard from "./components/IndexCard/indexcard";
 import Section2 from "./components/Index2Section/index2section";
 import Section3 from "./components/Index3Section/index3section";
+import styles from "./page.module.css";
 
 export default function Home() {
 
@@ -35,7 +36,7 @@ export default function Home() {
       <IndexCarrossel />
       <TituloInicial texto="Conheça a nossa Biblioteca!" />
       <main>
-      <section className="sectioncards">
+      <section className={styles.sectioncards}>
         {cards.map((card, index) => (
           <Indexcard
             key={index}

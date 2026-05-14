@@ -21,6 +21,7 @@ time, mark, audio, video {
 } /*Css reset*/
 
 /*Mudar Tema */
+
 :root {
     --bg-color: #fffff0;
     --text-color: #000000;
@@ -39,36 +40,6 @@ time, mark, audio, video {
 
 }
 
-.sectioncards header img {
-    display: block; /* faz o link ocupar toda a área da imagem */
-    border-radius: 25px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sectioncards header img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-
-#mudar_tema {
-    color:var(--iconmudartema-color); /* modo claro */
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-left: auto;
-    
-}
-
-.dark-mode #mudar_tema {
-    color:var(--iconmudartema-color); /* modo escuro */
-}
-
-.dark-mode .logo {
-    filter: brightness(0) invert(1);
-}
-
 .dark-mode {
     --bg-color: #7f8e9c;
     --text-color: #ffffff;
@@ -79,60 +50,4 @@ time, mark, audio, video {
     --button-bg: rgba(255,255,255,0.2);
     --button-text: #ffffff;
     --iconmudartema-color: yellow;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Trebuchet MS';
-}
-
-/* 1º Section (3 cards) */
-.sectioncards{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-large);
-    align-items: stretch;
-    padding-top: 60px;
-    padding-bottom: 60px; /*Espaçar os 3 cards do 2º section*/
-    background-color: var(--menu-color);
-}
-
-.sectioncards section {
-    width: 450px;
-    max-width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-
-.titulo1section{
-    text-align: left;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 0.6rem;
-}
-
-/*MEDIA QUERY*/
-@media (max-width: 768px) {
-    /* 1ª SECTION (CARDS) */
-    .sectioncards {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-large);
-    }
-
-    .sectioncards section {
-        max-width: 260px; 
-    }
-
-
-    .textocards {
-        font-size: 13px;
-        padding: 0 10px;
-    }
 }
